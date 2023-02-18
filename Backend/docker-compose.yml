@@ -1,0 +1,10 @@
+version: "3"
+services:
+  envoy:
+    image: envoyproxy/envoy:v1.24.0
+    volumes:
+      - ./envoy-config.yml:/etc/envoy/envoy.yaml
+      - ./proto/generated/killrvideo_proto_descriptor.pb:/data/killrvideo_proto_descriptor.pb
+    ports:
+      - "8000:8000"
+      - "9000:9000"

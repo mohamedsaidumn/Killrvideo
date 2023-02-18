@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <script type="text/javascript" src="grpc_client_call.js"></script> -->
+  </head>
+  <body>
+    <h1>HTML DOM Events</h1>
+    <h2>The onclick Event</h2>
+
+    <p>The onclick event triggers a function when an element is clicked on.</p>
+    <p>Click to trigger a function that will output "Hello World":</p>
+
+    <button id="myButton">Click me</button>
+
+    <p id="demo"></p>
+    <script>
+      // console.log("Client-side code running");
+
+      const button = document.getElementById("myButton");
+      // button.addEventListener("click", function (e) {
+      //   console.log("button was clicked");
+      //   document.getElementById("demo").innerHTML = "Hello World";
+      // });
+
+      async function postData(url = "", data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          mode: "cors", // no-cors, *cors, same-origin
+          cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+          credentials: "same-origin", // include, *same-origin, omit
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          redirect: "follow", // manual, *follow, error
+          referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+          body: JSON.stringify(data), // body data type must match "Content-Type" header
+        });
+        return response; // parses JSON response into native JavaScript objects
+      }
+
+      button.addEventListener("click", async function (e) {
+        console.log("button was clicked");
+
+        let result = await postData("http://localhost:8000/v1/comments", {
+          video_id: { value: "XXXX-1111-1111-1111" },
+          user_id: { value: "YYYY-2222-2222-2222" },
+          comment_id: { value: "ZZZ-3333-3333-3333" },
+          Comment: "hello",
+        });
+        document.getElementById("demo").innerHTML = result.response;
+        console.log(result.response);
+      });
+      //   postData("http://localhost:8000/v1/comments", {
+      //     video_id: { value: "XXXX-1111-1111-1111" },
+      //     user_id: { value: "YYYY-2222-2222-2222" },
+      //     comment_id: { value: "ZZZ-3333-3333-3333" },
+      //     Comment: "hello",
+      //   }).then((data) => {
+      //     //console.log(data); // JSON data parsed by `data.json()` call
+      //     document.getElementById("demo").innerHTML = data.;
+      //   });
+      // });
+    </script>
+  </body>
+</html>

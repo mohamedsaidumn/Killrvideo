@@ -1,3 +1,6 @@
 backend-services/node_modules
 backend-services/protos/generated
+backend-services/protos/google
+backend-services/src/generated/google
+
 frontend-server/node_modules

@@ -4,7 +4,7 @@ package killrvideo.comments;
 
 //import "google/protobuf/timestamp.proto";
 import "google/api/annotations.proto";
-import "common_types.proto";
+import "common/common_types.proto";
 
 // Manages comments
 service CommentsService {

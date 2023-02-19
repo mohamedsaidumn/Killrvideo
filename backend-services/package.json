@@ -9,7 +9,8 @@
     "convict": "^6.2.4",
     "google-protobuf": "^3.21.2",
     "grpc-server-reflection": "^0.1.5",
-    "grpc-web": "^1.4.2"
+    "grpc-web": "^1.4.2",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "grpc-tools": "^1.12.4",

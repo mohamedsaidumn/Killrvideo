@@ -2,6 +2,12 @@ import convict from "convict";
 
 // Create application config
 const conf = convict({
+  loggingLevel: {
+    doc: "The default logger output level",
+    format: String,
+    default: "verbose",
+    env: "KILLRVIDEO_LOGGING_LEVEL",
+  },
   listen: {
     ip: {
       doc: "The IP address for Grpc services to listen on",

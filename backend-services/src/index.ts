@@ -1,11 +1,22 @@
 import { GrpcServer } from "./grpc-server/server";
 import { services } from "./services/index";
+import config from "./common/config";
+import { logger, setLoggingLevel } from "./common/logging";
 
-//we add our service implementation to the Users Server
-//we start our server on implementation on socket localhost:port
-//the connection we create is insecure so anybody in the middle can read the data
+//Start the application
+class KillrvideoApp {
+  constructor() {}
 
-let server = new GrpcServer(services);
-server.start();
+  startAsync(): void {
+    let loggingLevel: string = config.get("loggingLevel");
+    logger.log(loggingLevel, `Logging initialized at ${loggingLevel}`);
 
-//server.start();
+    let server = new GrpcServer(services);
+    server.start();
+    logger.log("info", "KillrVideo has started. Press Ctrl+C to exit.");
+  }
+}
+
+let app = new KillrvideoApp();
+
+app.startAsync();

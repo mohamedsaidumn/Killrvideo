@@ -3,11 +3,11 @@ import {
   sendUnaryData,
   UntypedHandleCall,
 } from "@grpc/grpc-js";
-import { ICommentsServiceServer } from "../proto/generated/comments_service_grpc_pb";
+import { ICommentsServiceServer } from "../../../protos/generated/comments_service_grpc_pb";
 import {
   CommentOnVideoRequest,
   CommentOnVideoResponse,
-} from "../proto/generated/comments_service_pb";
+} from "../../../protos/generated/comments_service_pb";
 
 //this class implements our server interface
 export class CommentsServiceServer implements ICommentsServiceServer {

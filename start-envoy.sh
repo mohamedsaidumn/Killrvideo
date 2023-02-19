@@ -3,7 +3,8 @@
 
 # generate the reservation_service_definition.pb file that we can pass to envoy so that knows the grpc service
 # we want to expose
-yarn build 
+yarn --cwd backend-services build 
+
 
 if ! [ $? -eq 0 ]; then
     echo "protobuf compilation failed"
